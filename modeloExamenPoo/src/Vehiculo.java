@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.time.LocalDate;
 
 public class Vehiculo {
@@ -5,6 +6,7 @@ public class Vehiculo {
     private String modelo;
     private LocalDate anio;
     private String marca;
+    private String patente;
     private LocalDate fechavtv;
     private boolean motor;
     private boolean frenos;
@@ -13,11 +15,12 @@ public class Vehiculo {
 
     //constructor
 
-    public Vehiculo(String modelo,LocalDate anio,String marca, LocalDate fechavtv
+    public Vehiculo(String modelo,LocalDate anio,String marca, String patente, LocalDate fechavtv
     ,boolean motor,boolean frenos,boolean suspension){
         this.modelo=modelo;
         this.anio=anio;
         this.marca=marca;
+        this.patente=patente;
         this.fechavtv=fechavtv;
         this.motor=motor;
         this.frenos=frenos;
@@ -36,6 +39,9 @@ public class Vehiculo {
 
     public String getMarca() {
         return marca;
+    }
+    public String getPatente(){
+        return patente;
     }
 
     public LocalDate getFechavtv() {
@@ -64,6 +70,10 @@ public class Vehiculo {
         this.marca = marca;
     }
 
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
+
     public void setFechavtv(LocalDate fechavtv) {
         this.fechavtv = fechavtv;
     }
@@ -80,4 +90,52 @@ public class Vehiculo {
         this.suspension = suspension;
     }
     //metodos
+    public boolean motorPasoVtv(){
+        return motor;
+    }
+    public boolean frenosPasoVtv(){
+        return frenos;
+    }
+    public boolean suspensionPasoVtv(){
+        return suspension;
+    }
+    public void mostrarInforme(){
+        JOptionPane.showMessageDialog(null,"Vtv para el vehiculo: ");
+        JOptionPane.showMessageDialog(null,"Marca: "+ this.marca);
+        JOptionPane.showMessageDialog(null,"Modelo: " + this.modelo);
+        JOptionPane.showMessageDialog(null,"Año: "+ this.anio.getYear());
+        JOptionPane.showMessageDialog(null,"Fecha de vtv: " + this.fechavtv);
+
+        if (motorPasoVtv()){
+            JOptionPane.showMessageDialog(null,"el motor paso el vtv, hasta: " + fechavtv.plusYears(1));
+
+        }
+        if(frenosPasoVtv()){
+            JOptionPane.showMessageDialog(null,"los frenos pasaron el vtv, hasta" + fechavtv.plusYears(1));
+
+        }
+        if (suspensionPasoVtv()){
+            JOptionPane.showMessageDialog(null,"las suspensiones pasaron el vtv, hasta "+ fechavtv.plusYears(1));
+        }else{
+           JOptionPane.showMessageDialog(null,"El vehiculo necesita reparacion");
+           if(!motorPasoVtv()){
+               JOptionPane.showMessageDialog(null,"El motor necesita reparacion");
+           }
+           if(!frenosPasoVtv()){
+               JOptionPane.showMessageDialog(null,"Los frenos necesitan reparacion");
+           }
+           if (!suspensionPasoVtv()){
+               JOptionPane.showMessageDialog(null,"la suspension necesita reparacion");
+           }
+        }
+
+
+    }
+
+
+
+
+
+
+
 }
