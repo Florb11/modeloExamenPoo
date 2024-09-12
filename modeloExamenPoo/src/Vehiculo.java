@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class Vehiculo {
     //Atributos
     private String modelo;
-    private LocalDate anio;
+    private int anio;
     private String marca;
     private String patente;
     private LocalDate fechavtv;
@@ -15,7 +15,7 @@ public class Vehiculo {
 
     //constructor
 
-    public Vehiculo(String modelo,LocalDate anio,String marca, String patente, LocalDate fechavtv
+    public Vehiculo(String modelo,int anio,String marca, String patente, LocalDate fechavtv
     ,boolean motor,boolean frenos,boolean suspension){
         this.modelo=modelo;
         this.anio=anio;
@@ -33,7 +33,7 @@ public class Vehiculo {
         return modelo;
     }
 
-    public LocalDate getAnio() {
+    public int getAnio() {
         return anio;
     }
 
@@ -62,7 +62,7 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public void setAnio(LocalDate anio) {
+    public void setAnio(int anio) {
         this.anio = anio;
     }
 
@@ -101,17 +101,18 @@ public class Vehiculo {
     }
     public void mostrarInforme(){
         JOptionPane.showMessageDialog(null,"Vtv para el vehiculo: ");
-        JOptionPane.showMessageDialog(null,"Marca: "+ this.marca);
-        JOptionPane.showMessageDialog(null,"Modelo: " + this.modelo);
-        JOptionPane.showMessageDialog(null,"Año: "+ this.anio.getYear());
-        JOptionPane.showMessageDialog(null,"Fecha de vtv: " + this.fechavtv);
+        JOptionPane.showMessageDialog(null,"\nMarca: "+ this.marca);
+        JOptionPane.showMessageDialog(null,"\nN° Patente");
+        JOptionPane.showMessageDialog(null,"\nModelo: " + this.modelo);
+        JOptionPane.showMessageDialog(null,"\nAño: "+ anio);
+        JOptionPane.showMessageDialog(null,"\nFecha de vtv: " + this.fechavtv);
 
         if (motorPasoVtv()){
-            JOptionPane.showMessageDialog(null,"el motor paso el vtv, hasta: " + fechavtv.plusYears(1));
+            JOptionPane.showMessageDialog(null,"el motor paso el vtv, hasta: " + this.fechavtv.plusYears(1));
 
         }
         if(frenosPasoVtv()){
-            JOptionPane.showMessageDialog(null,"los frenos pasaron el vtv, hasta" + fechavtv.plusYears(1));
+            JOptionPane.showMessageDialog(null,"los frenos pasaron el vtv, hasta" + this.fechavtv.plusYears(1));
 
         }
         if (suspensionPasoVtv()){
