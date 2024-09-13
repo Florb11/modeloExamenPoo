@@ -100,35 +100,49 @@ public class Vehiculo {
         return suspension;
     }
     public void mostrarInforme(){
-        JOptionPane.showMessageDialog(null,"Vtv para el vehiculo: ");
-        JOptionPane.showMessageDialog(null,"\nMarca: "+ this.marca);
-        JOptionPane.showMessageDialog(null,"\nN° Patente");
-        JOptionPane.showMessageDialog(null,"\nModelo: " + this.modelo);
-        JOptionPane.showMessageDialog(null,"\nAño: "+ anio);
-        JOptionPane.showMessageDialog(null,"\nFecha de vtv: " + this.fechavtv);
+        JOptionPane.showMessageDialog(null,"Vtv para el vehiculo: " +
+                "\nMarca: "+ this.marca +
+                "\nN° Patente: " + this.patente +
+                "\nModelo: " + this.modelo +
+                "\nAño: "+ this.anio +
+                "\nFecha de vtv: " + this.fechavtv);
 
         if (motorPasoVtv()){
-            JOptionPane.showMessageDialog(null,"el motor paso el vtv, hasta: " + this.fechavtv.plusYears(1));
+            JOptionPane.showMessageDialog(null,"el motor esta habilitado");
 
         }
         if(frenosPasoVtv()){
-            JOptionPane.showMessageDialog(null,"los frenos pasaron el vtv, hasta" + this.fechavtv.plusYears(1));
+            JOptionPane.showMessageDialog(null,"los frenos estan habilitados" );
 
         }
         if (suspensionPasoVtv()){
-            JOptionPane.showMessageDialog(null,"las suspensiones pasaron el vtv, hasta "+ fechavtv.plusYears(1));
-        }else{
-           JOptionPane.showMessageDialog(null,"El vehiculo necesita reparacion");
-           if(!motorPasoVtv()){
-               JOptionPane.showMessageDialog(null,"El motor necesita reparacion");
-           }
-           if(!frenosPasoVtv()){
-               JOptionPane.showMessageDialog(null,"Los frenos necesitan reparacion");
-           }
-           if (!suspensionPasoVtv()){
-               JOptionPane.showMessageDialog(null,"la suspension necesita reparacion");
-           }
+
+            JOptionPane.showMessageDialog(null,"las suspensiones estan habilitadas ");
         }
+
+        if (!motorPasoVtv() || !frenosPasoVtv() || !suspensionPasoVtv()) {
+
+                JOptionPane.showMessageDialog(null, "El vehiculo necesita reparacion");
+
+                if (!motorPasoVtv()) {
+
+                    JOptionPane.showMessageDialog(null, "El motor necesita reparacion");
+                }
+
+                if (!frenosPasoVtv()) {
+
+                    JOptionPane.showMessageDialog(null, "Los frenos necesitan reparacion");
+                }
+
+                if (!suspensionPasoVtv()) {
+
+                    JOptionPane.showMessageDialog(null, "La suspension necesita reparacion");
+                }
+            }
+        if (motorPasoVtv() && frenosPasoVtv() && suspensionPasoVtv()) {
+            JOptionPane.showMessageDialog(null, "El vehiculo paso el VTV hasta " + fechavtv.plusYears(1));
+        }
+
 
 
     }
