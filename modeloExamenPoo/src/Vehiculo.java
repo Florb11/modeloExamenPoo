@@ -15,16 +15,16 @@ public class Vehiculo {
 
     //constructor
 
-    public Vehiculo(String modelo,int anio,String marca, String patente, LocalDate fechavtv
-    ,boolean motor,boolean frenos,boolean suspension){
-        this.modelo=modelo;
-        this.anio=anio;
-        this.marca=marca;
-        this.patente=patente;
-        this.fechavtv=fechavtv;
-        this.motor=motor;
-        this.frenos=frenos;
-        this.suspension=suspension;
+    public Vehiculo(String modelo, int anio, String marca, String patente, LocalDate fechavtv
+            , boolean motor, boolean frenos, boolean suspension) {
+        this.modelo = modelo;
+        this.anio = anio;
+        this.marca = marca;
+        this.patente = patente;
+        this.fechavtv = fechavtv;
+        this.motor = motor;
+        this.frenos = frenos;
+        this.suspension = suspension;
 
     }
     //get y set
@@ -40,21 +40,24 @@ public class Vehiculo {
     public String getMarca() {
         return marca;
     }
-    public String getPatente(){
+
+    public String getPatente() {
         return patente;
     }
 
     public LocalDate getFechavtv() {
         return fechavtv;
     }
-    public boolean getMotor(){
+
+    public boolean getMotor() {
         return motor;
     }
 
     public boolean getFrenos() {
         return frenos;
     }
-    public boolean getSuspension(){
+
+    public boolean getSuspension() {
         return suspension;
     }
 
@@ -89,68 +92,65 @@ public class Vehiculo {
     public void setSuspension(boolean suspension) {
         this.suspension = suspension;
     }
+
     //metodos
-    public boolean motorPasoVtv(){
+    public boolean motorPasoVtv() {
         return motor;
     }
-    public boolean frenosPasoVtv(){
+
+    public boolean frenosPasoVtv() {
         return frenos;
     }
-    public boolean suspensionPasoVtv(){
+
+    public boolean suspensionPasoVtv() {
         return suspension;
     }
-    public void mostrarInforme(){
-        JOptionPane.showMessageDialog(null,"Vtv para el vehiculo: " +
-                "\nMarca: "+ this.marca +
+
+    public void mostrarInforme() {
+        JOptionPane.showMessageDialog(null, "Vtv para el vehiculo: " +
+                "\nMarca: " + this.marca +
                 "\nN° Patente: " + this.patente +
                 "\nModelo: " + this.modelo +
-                "\nAño: "+ this.anio +
+                "\nAño: " + this.anio +
                 "\nFecha de vtv: " + this.fechavtv);
 
-        if (motorPasoVtv()){
-            JOptionPane.showMessageDialog(null,"el motor esta habilitado");
+        if (motorPasoVtv()) {
 
-        }
-        if(frenosPasoVtv()){
-            JOptionPane.showMessageDialog(null,"los frenos estan habilitados" );
+            JOptionPane.showMessageDialog(null, "el motor esta habilitado");
 
-        }
-        if (suspensionPasoVtv()){
+        } else {
 
-            JOptionPane.showMessageDialog(null,"las suspensiones estan habilitadas ");
-        }
+            JOptionPane.showMessageDialog(null, "el motor no esta habilitado");
+            if (frenosPasoVtv()) {
 
-        if (!motorPasoVtv() || !frenosPasoVtv() || !suspensionPasoVtv()) {
+                JOptionPane.showMessageDialog(null, "los frenos estan habilitados");
 
-                JOptionPane.showMessageDialog(null, "El vehiculo necesita reparacion");
+            } else {
 
-                if (!motorPasoVtv()) {
-
-                    JOptionPane.showMessageDialog(null, "El motor necesita reparacion");
-                }
-
-                if (!frenosPasoVtv()) {
-
-                    JOptionPane.showMessageDialog(null, "Los frenos necesitan reparacion");
-                }
-
-                if (!suspensionPasoVtv()) {
-
-                    JOptionPane.showMessageDialog(null, "La suspension necesita reparacion");
-                }
+                JOptionPane.showMessageDialog(null, "los frenos no estan habilitados");
             }
-        if (motorPasoVtv() && frenosPasoVtv() && suspensionPasoVtv()) {
-            JOptionPane.showMessageDialog(null, "El vehiculo paso el VTV hasta " + fechavtv.plusYears(1));
+            if (suspensionPasoVtv()) {
+
+                JOptionPane.showMessageDialog(null, "las suspensiones estan habilitadas ");
+            } else {
+
+                JOptionPane.showMessageDialog(null, "las suspensiones no estan habilitadas");
+
+                if (!motorPasoVtv() && !frenosPasoVtv() && !suspensionPasoVtv()) {
+
+                    JOptionPane.showMessageDialog(null, "El vehiculo entero necesita reparacion, recomendacion comparse otro o caminar F...");
+
+
+                    if (motorPasoVtv() && frenosPasoVtv() && suspensionPasoVtv()) {
+
+                        JOptionPane.showMessageDialog(null, "El vehiculo paso el VTV hasta " + fechavtv.plusYears(1));
+                    }
+
+
+                }
+
+
+            }
         }
-
-
-
     }
-
-
-
-
-
-
-
 }
